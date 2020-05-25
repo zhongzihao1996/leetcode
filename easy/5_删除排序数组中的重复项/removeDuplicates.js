@@ -13,5 +13,3 @@ var removeDuplicates = function (nums) {
   }
   return i + 1;
 }
-
-console.log(removeDuplicates([1, 1, 2]));

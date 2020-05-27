@@ -12,6 +12,7 @@ var threeSumClosest = function (nums, target) {
     // 直到左右两指针相遇
     while (left < right) {
       const sum = nums[i] + nums[left] + nums[right];
+      if (sum === target) return sum; // 题目为有且仅有一种情况
       if (Math.abs(target - result) > Math.abs(target - sum)) {
         result = sum;
       }

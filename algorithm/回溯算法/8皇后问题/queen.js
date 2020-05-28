@@ -18,6 +18,7 @@ class Queen {
   }
 
   buildList(list, row) {
+    // 递归中止条件,找到一个解缓存起来
     if (row === list.length) {
       this.result.push(list);
       return;
@@ -50,4 +51,4 @@ class Queen {
 }
 
 const queen = new Queen(4);
-console.log(queen);
+console.log(queen.result);

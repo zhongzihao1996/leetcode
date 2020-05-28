@@ -24,11 +24,12 @@ class Queen {
       return;
     }
     for (let col = 0, len = list.length; col < len; col++) {
-      if (!this.isSafe(list, row, col)) continue;
-      list[row][col] = 1;
-      this.buildList(JSON.parse(JSON.stringify(list)), row + 1);
-      // 当前行列递归已经结束重置//回溯
-      list[row][col] = 0;
+      if (this.isSafe(list, row, col)) {
+        list[row][col] = 1;
+        this.buildList(JSON.parse(JSON.stringify(list)), row + 1);
+        // 当前行列递归已经结束重置//回溯
+        list[row][col] = 0;
+      }
     }
   }
 
@@ -50,5 +51,5 @@ class Queen {
   }
 }
 
-const queen = new Queen(4);
+const queen = new Queen(8);
 console.log(queen.result);

@@ -27,7 +27,7 @@ class Queen {
       if (!this.isSafe(list, row, col)) continue;
       list[row][col] = 1;
       this.buildList(JSON.parse(JSON.stringify(list)), row + 1);
-      // 回溯
+      // 当前行列递归已经结束重置//回溯
       list[row][col] = 0;
     }
   }

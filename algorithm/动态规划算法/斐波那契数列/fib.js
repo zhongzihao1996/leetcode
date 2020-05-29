@@ -25,7 +25,7 @@ class Fib {
     let arr = new Array(n).fill(0);
     arr[0] = 1; // 可以省略的
     arr[1] = 1;
-    for (let i = 2; i < n + 1; i++) {
+    for (let i = 2; i < n; i++) {
       arr[i] = arr[i - 1] + arr[i - 2];
     }
     // 返回最后一个

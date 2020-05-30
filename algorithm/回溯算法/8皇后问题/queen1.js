@@ -21,10 +21,9 @@ class Queen {
       return;
     }
     for (let col = 0; col < this.num; col++) {
+      this.arr[row] = col;
       if (this.isSafe(row)) {
-        this.arr[row] = col;
         this.buildList(row + 1);
-        this.arr[row] = -1;
       }
     }
   }
@@ -39,4 +38,4 @@ class Queen {
 }
 
 const queen = new Queen(8);
-console.log(queen.result.length);
+console.log(queen.result);

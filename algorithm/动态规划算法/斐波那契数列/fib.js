@@ -9,11 +9,8 @@ class Fib {
    * @param {*} n
    */
   recurFib(n) {
-    if (n < 2) {
-      return n;
-    } else {
-      return this.recurFib(n - 1) + this.recurFib(n - 2);
-    }
+    if (n < 2) return n;
+    return this.recurFib(n - 1) + this.recurFib(n - 2);
   }
 
   /**
@@ -36,9 +33,5 @@ class Fib {
 const fib = new Fib();
 
 console.time('Fib');
-console.log(fib.recurFib(40));
-console.timeEnd('Fib');
-
-console.time('Fib');
-console.log(fib.dynFib(40));
+console.log(fib.recurFib(3));
 console.timeEnd('Fib');

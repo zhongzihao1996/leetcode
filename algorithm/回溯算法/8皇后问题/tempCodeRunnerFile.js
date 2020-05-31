@@ -54,5 +54,3 @@ class Queen {
 
 const queen = new Queen(8);
 console.log(queen.result);
-console.log(queen.result.length);
-

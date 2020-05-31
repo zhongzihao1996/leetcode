@@ -30,7 +30,9 @@ class Queen {
 
   isSafe(row) {
     for (let i = 0; i < row; i++) {
+      // 判断列
       if (this.arr[i] === this.arr[row]) return false;
+      // 判断对角线
       if (Math.abs(this.arr[row] - this.arr[i]) === row - i) return false;
     }
     return true;

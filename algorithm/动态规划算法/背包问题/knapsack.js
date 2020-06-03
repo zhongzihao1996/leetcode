@@ -38,32 +38,17 @@ class Knapsack {
         }
       }
     }
-    delete this.result[-1];
+    // delete this.result[-1];
     return this.result[row - 1][col];
   }
 }
 
 const product = [
-  {
-    weight: 2,
-    value: 6,
-  },
-  {
-    weight: 2,
-    value: 3,
-  },
-  {
-    weight: 6,
-    value: 5,
-  },
-  {
-    weight: 5,
-    value: 4,
-  },
-  {
-    weight: 4,
-    value: 6,
-  },
+  { weight: 2, value: 3 },
+  { weight: 2, value: 6 },
+  { weight: 6, value: 5 },
+  { weight: 5, value: 4 },
+  { weight: 4, value: 6 },
 ];
 const capacity = 10;
 const knapsack = new Knapsack(product, capacity);

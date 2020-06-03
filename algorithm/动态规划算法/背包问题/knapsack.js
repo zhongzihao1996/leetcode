@@ -1,24 +1,71 @@
-// 基本背包算法，求最大值
-function knapsack(weights, values, W) {
-  let n = weights.length;
-  let f = new Array(n);
-  //解決0边界
-  f[-1] = new Array(W + 1).fill(0);
-  for (let i = 0; i < n; i++) {
-    f[i] = new Array(W).fill(0);
-    for (let j = 0; j < W + 1; j++) {
-      if (j < weights[i]) {
-        f[i][j] = f[i - 1][j];
-      } else {
-        f[i][j] = Math.max(f[i - 1][j], f[i - 1][j - weights[i]] + values[i]);
-      }
+/**
+ *  01背包问题
+ *  有N件物品和一个容量为V的背包。第i件物品的体积是c[i]，价值是w[i]。求解将哪些物品装入背包可使价值总和最大
+ *
+ * f[i][v]=max{f[i-1][v],f[i-1][v-c[i]]+w[i]}
+ */
+class Knapsack {
+  constructor(product, capacity) {
+    this.product = product; // 物品 [{weight:1,value:1}]......
+    this.capacity = capacity; // 背包容量
+    this.result = [];
+    this.init();
+  }
+  // 初始化一个 product.length+1 *  capacity+1的矩阵
+  init() {
+    const row = this.product.length;
+    const col = this.capacity;
+    // 解決0边界
+    this.result[-1] = new Array(col + 1).fill(0);
+    for (let i = 0; i < row; i++) {
+      this.result[i] = new Array(col + 1).fill(0);
     }
   }
-  delete f[-1];
-  return f;
+  calculate() {
+    const row = this.product.length;
+    const col = this.capacity;
+    let product;
+    for (let i = 0; i < row; i++) {
+      for (let j = 0; j < col + 1; j++) {
+        product = this.product[i];
+        if (j < product.weight) {
+          this.result[i][j] = this.result[i - 1][j];
+        } else {
+          this.result[i][j] = Math.max(
+            this.result[i - 1][j],
+            this.result[i - 1][j - product.weight] + product.value
+          );
+        }
+      }
+    }
+    delete this.result[-1];
+    return this.result[row - 1][col];
+  }
 }
 
-const w = 11;
-const weight = [4, 2, 2, 5, 6];
-const value = [6, 3, 9, 4, 6];
-console.log(knapsack(weight, value, w));
+const product = [
+  {
+    weight: 2,
+    value: 6,
+  },
+  {
+    weight: 2,
+    value: 3,
+  },
+  {
+    weight: 6,
+    value: 5,
+  },
+  {
+    weight: 5,
+    value: 4,
+  },
+  {
+    weight: 4,
+    value: 6,
+  },
+];
+const capacity = 10;
+const knapsack = new Knapsack(product, capacity);
+console.log(knapsack.calculate());
+console.log(knapsack.result);

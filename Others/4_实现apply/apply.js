@@ -5,7 +5,6 @@ Function.prototype.apply_ = function (context, args) {
   let param_ = args || [];
   const result = context_.fn(param_);
   delete context_.fn;
-  args;
   return result;
 };
 

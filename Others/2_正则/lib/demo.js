@@ -2,7 +2,7 @@
  * url参数截取
  * @param {String} param_name 参数名
  */
-function getQueryString(param_name) {
+function get_query_param(param_name) {
   const reg = new RegExp(`(?<=${param_name}=)[^&]*`, 'g');
   const result = window.location.search.substr(1).match(reg);
   return result ? result[0] : '';

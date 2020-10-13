@@ -4,6 +4,7 @@
  * @return {string}
  */
 var addBinary = function (a, b) {
+  if (a === '0' && b === '0') return '0';
   // 先补齐位数
   let abs_len = Math.abs(a.length - b.length);
   while (abs_len > 0) {
@@ -17,12 +18,14 @@ var addBinary = function (a, b) {
   let c = '';
   // 进位 0  或者  1
   let over_byte = 0;
+  // 计算结果
+  let count;
   // 从尾部开始遍历
   // 每次遍历后都重置进位
   let end = a.length - 1;
   while (end >= 0) {
     // 位数相加并且加上进位
-    let count = Number(a[end]) + Number(b[end]) + over_byte;
+    count = Number(a[end]) + Number(b[end]) + over_byte;
     // 有进位
     if (count >= 2) {
       // 取模

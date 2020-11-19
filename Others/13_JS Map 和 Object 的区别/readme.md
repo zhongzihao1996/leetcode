@@ -77,6 +77,24 @@ delete obj.name
 map.delete('name')
 ```
 
+## 7. 判断key是否在对象中
+``` bash 
+# Object
+'name' in obj
+
+# Map
+map.has('name')
+```
+
+## 8. 清空
+``` bash 
+# Object
+obj = {};
+
+# Map
+map.clear();
+```
+
 
 # 何时使用 Map ，何时使用 Object
 

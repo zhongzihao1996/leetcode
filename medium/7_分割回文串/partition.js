@@ -10,16 +10,16 @@ var partition = function (s) {
   return result;
 };
 
-const backtracking = (str, start, curr_arr, result) => {
+const backtracking = (str, start, path, result) => {
   if (start === str.length) {
-    result.push(curr_arr);
+    result.push(path);
     return;
   }
   for (let i = start; i < str.length; i++) {
     let curr_str = str.slice(start, i + 1);
     // 剪枝
     if (isPalindrome(curr_str)) {
-      backtracking(str, i + 1, [...curr_arr, curr_str], result);
+      backtracking(str, i + 1, [...path, curr_str], result);
     }
   }
 };
@@ -29,4 +29,4 @@ const isPalindrome = (str) => {
 };
 
 
-console.log(partition('aab'));
+console.log(partition('aabaabaabaabaabaabaabaabbaabaab'));

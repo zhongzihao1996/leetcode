@@ -2,19 +2,18 @@
  * @param {number[][]} matrix
  * @return {void} Do not return anything, modify matrix in-place instead.
  */
+// 旋转后：row = col;col = n - 1 - row;
 var rotate = function (matrix) {
   const len = matrix.length;
-  const clone_matrix = new Array(len).fill(0).map(() => new Array(len).fill(0));
-  for (let i = 0; i < len; i++) {
-    for (let j = 0; j < len; j++) {
-      clone_matrix[j][len - i - 1] = matrix[i][j]
+  for (let i = 0; i < Math.floor(len / 2); i++) {
+    for (let j = 0; j < Math.floor((len + 1) / 2); j++) {
+      const temp = matrix[i][j];
+      matrix[i][j] = matrix[len - 1 - j][i];
+      matrix[len - 1 - j][i] = matrix[len - 1 - i][len - 1 - j];
+      matrix[len - 1 - i][len - 1 - j] = matrix[j][len - 1 - i];
+      matrix[j][len - 1 - i] = temp;
     }
   };
-  for (let i = 0; i < len; i++) {
-    for (let j = 0; j < len; j++) {
-      matrix[i][j] = clone_matrix[i][j];
-    }
-  }
   return matrix;
 };
 

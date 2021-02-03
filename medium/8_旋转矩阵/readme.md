@@ -57,3 +57,20 @@
 输入：matrix = [[1,2],[3,4]]
 输出：[[3,1],[4,2]]
 ```
+
+``` bash 
+row = col; 
+col = n−row−1;
+
+matrix_new[j][n - i - 1] = matrix[i][j];
+```
+
+
+
+n为奇数
+
+![](https://assets.leetcode-cn.com/solution-static/48/1.png)
+
+n为偶数
+
+![](https://assets.leetcode-cn.com/solution-static/48/2.png)

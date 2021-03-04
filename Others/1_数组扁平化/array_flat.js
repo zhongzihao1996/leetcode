@@ -1,36 +1,33 @@
-/**
- * 数组扁平化
+/** 数组扁平化
  *
- *
- *
+ * @param {*} arr
  */
-let arr = [1, [2, [3, [4, 5]]], 6];
 
 // 解法一：flat
-(function (arr) {
-  arr = arr.flat(Infinity);
-  console.log(arr);
-})(arr);
+const flatArray = (arr) => arr.flat(Infinity);
 
 // 解法二：正则
-(function (arr) {
+const regArray = (arr) => {
   let str = JSON.stringify(arr);
-  str = str.replace(/[\[\]]/g, '');
-  str = JSON.parse(`[${str}]`);
-  console.log(str);
-})(arr);
+  let reg = /[\[\]]/g;
+  str = str.replaceAll(reg, '');
+  return JSON.parse(`[${str}]`);
+};
 
 // 解法三：递归
-(function (arr) {
-  let result = [];
-  (function repeat(arr) {
-    for (let i = 0, len = arr.length; i < len; i++) {
-      if (Array.isArray(arr[i])) {
-        repeat(arr[i]);
-      } else {
-        result.push(arr[i]);
-      }
+const recursionArray = (arr) => {
+  const result = [];
+  for (let i = 0; i < arr.length; i++) {
+    if (Array.isArray(arr[i])) {
+      result.push(...recursionArray(arr[i]));
+    } else {
+      result.push(arr[i]);
     }
-  })(arr);
-  console.log(result);
-})(arr);
+  }
+  return result;
+};
+
+const array = [1, [2, [3, [4, 5]]], 6];
+console.log(flatArray(array));
+console.log(regArray(array));
+console.log(recursionArray(array));
